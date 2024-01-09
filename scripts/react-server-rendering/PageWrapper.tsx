@@ -1,6 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
-import Character from '../src/Character.tsx'
+import Character from '../../src/Character.tsx'
 import { queryClient } from './PrefetchingClient.ts'
 
 type Props = {

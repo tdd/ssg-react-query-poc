@@ -5,7 +5,7 @@ import React from 'react'
 import { renderToStaticNodeStream } from 'react-dom/server'
 import { resolve } from 'node:path'
 
-import { CHARACTER_IDS } from '../src/api/characters.ts'
+import { CHARACTER_IDS } from '../../src/api/characters.ts'
 import PageWrapper from './PageWrapper.tsx'
 import { prefetchCharacters } from './PrefetchingClient.ts'
 

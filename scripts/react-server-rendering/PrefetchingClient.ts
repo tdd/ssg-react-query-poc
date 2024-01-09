@@ -1,5 +1,8 @@
 import { QueryClient } from '@tanstack/react-query'
-import { fetchCharacter, getCharacterQueryKey } from '../src/api/characters.ts'
+import {
+  fetchCharacter,
+  getCharacterQueryKey,
+} from '../../src/api/characters.ts'
 
 export const queryClient = new QueryClient()
 
