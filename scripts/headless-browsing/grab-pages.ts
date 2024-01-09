@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { Worker, isMainThread, workerData } from 'node:worker_threads'
 import { launchWorker } from './worker'
 
-const WORKER_COUNT = 2
+const WORKER_COUNT = 4
 
 const PLACES = ['paris', 'strasbourg']
 const SPECIALTIES = [
@@ -49,10 +49,8 @@ function spawnWorkerForURLGroup(urls: string[]) {
     const worker = new Worker(fileURLToPath(import.meta.url), {
       workerData: urls,
     })
-    const id = worker.threadId
     worker.on('error', reject)
     worker.on('exit', (code) => {
-      console.log('Worker exit:', id, 'code:', code)
       if (code !== 0) {
         reject(`Worker exited with code ${code}`)
       } else {

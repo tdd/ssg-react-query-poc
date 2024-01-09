@@ -27,6 +27,11 @@ async function computeStylesheetURL({
   page: Page
   url: string
 }) {
+  // Unfortunately, Chromium's CSS Coverage API (hence Puppeteer's) has issues with
+  // range boundaries within media queries, causing breakages due to missing closing
+  // curlies for MQ-wrapped contents. (It also ignores @font-face declarations, but we
+  // could work around that.)  So until these are fixed, we have no choice but to keep
+  // the entire, bloated CSS (718K instead of 92K at the time of this writing).
   const styles: string[] = []
 
   page.on('response', async (response) => {
