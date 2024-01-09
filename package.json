@@ -8,10 +8,13 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "ssg": "node --no-warnings --loader esbuild-register/loader -r esbuild-register scripts/gen-character-pages.tsx"
+    "ssg": "node --no-warnings --loader esbuild-register/loader -r esbuild-register scripts/react-server-rendering/gen-character-pages.tsx",
+    "headless": "node --no-warnings --loader esbuild-register/loader -r esbuild-register scripts/headless-browsing/grab-pages.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.14.2",
+    "node-html-parser": "^6.1.12",
+    "puppeteer": "^21.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
