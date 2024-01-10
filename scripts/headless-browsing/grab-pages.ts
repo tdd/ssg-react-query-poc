@@ -38,16 +38,17 @@ if (isMainThread) {
 async function launchGrabber() {
   const urlGroups = computeURLs()
 
+  const start = performance.now()
   console.log('Grabbing pages…')
   const workers = urlGroups.map(spawnWorkerForURLGroup)
   await Promise.all(workers)
-  console.log('Done!')
+  console.log('All done in', performance.now() - start)
 }
 
-function spawnWorkerForURLGroup(urls: string[]) {
+function spawnWorkerForURLGroup(urls: string[], index: number) {
   return new Promise((resolve, reject) => {
     const worker = new Worker(fileURLToPath(import.meta.url), {
-      workerData: urls,
+      workerData: { urls, extractStylesheet: index === 0 },
     })
     worker.on('error', reject)
     worker.on('exit', (code) => {
